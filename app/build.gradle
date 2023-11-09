@@ -19,7 +19,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "TOKEN", '"token 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"')
+        buildConfigField("String", "TOKEN", '"token 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"')
         buildConfigField("String", "URL", '"https://api.github.com/"')
 
     }
@@ -30,7 +30,11 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -89,4 +93,7 @@ dependencies {
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
+
 }

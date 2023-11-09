@@ -19,7 +19,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
-        buildConfigField("String", "TOKEN", '"token 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"')
+        buildConfigField("String", "TOKEN", '"token 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"')
         buildConfigField("String", "URL", '"https://api.github.com/"')
     }
 
@@ -29,9 +29,14 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }}
+        }
+        debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
     buildscript{
         dependencies {
             classpath 'com.android.tools.build:gradle:8.0.0'
@@ -57,6 +62,9 @@ dependencies {
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+
+    implementation "net.zetetic:android-database-sqlcipher:4.4.0"
+    implementation "androidx.sqlite:sqlite-ktx:2.1.0"
 
 
 //    implementation "io.insert-koin:koin-core:2.2.3"

@@ -26,7 +26,7 @@ class GithubUserRepository : IGithubUserRepository {
                     Log.d(TAG, "tes sukses: ${response.message()}")
                 } else {
                     emit(ApiResponse.Error("onFailureResponse: ${response.message()}"))
-                    Log.e(TAG, "onFailureResponse: ${response.message()}")
+                    Log.e(TAG, "onFailureResponse: ${response.message()} ${response.body()}")
 
                 }
             } catch (e: Exception) {
@@ -108,7 +108,7 @@ class GithubUserRepository : IGithubUserRepository {
 
 
     companion object {
-        private const val TAG = "MainViewModel"
+        private const val TAG = "GithubUserRepository"
         private const val USER_Q = "a"
     }
 
