@@ -1,34 +1,23 @@
 version: 2.1
- 
-orbs:
-  android: circleci/android@0.2.1
- 
+
+# Define the jobs we want to run for this project
 jobs:
   build:
-    executor: android/android
+    docker:
+      - image: cimg/base:2023.03
     steps:
       - checkout
-      - restore_cache:
-          key: android-orb-v1-
-      - run:
-          name: Chmod permissions
-          command: sudo chmod +x ./gradlew
-      - save_cache:
-          key: 'android-orb-v1-{{ epoch }}'
-          paths:
-            - ~/.android/build-cache
-            - ~/.android/cache
-      - run:
-          name: Run Build
-          command: ./gradlew build
-      - store_artifacts: 
-          path: app/build/reports
-          destination: reports
-      - run:
-          name: Run Tests
-          command: ./gradlew lint test
-      - store_test_results:
-          path: app/build/test-results
-      - store_artifacts:  
-          path: app/build/outputs/apk/debug/
-          destination: artifact-file
+      - run: echo "this is the build job"
+  test:
+    docker:
+      - image: cimg/base:2023.03
+    steps:
+      - checkout
+      - run: echo "this is the test job"
+
+# Orchestrate our job run sequence
+workflows:
+  build_and_test:
+    jobs:
+      - build
+      - test
