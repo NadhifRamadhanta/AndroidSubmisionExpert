@@ -7,7 +7,7 @@ apply from: '../shared_dependencies.gradle'
 
 android {
     namespace 'com.example.androidsubmision1.countfavorite'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         minSdk 21
