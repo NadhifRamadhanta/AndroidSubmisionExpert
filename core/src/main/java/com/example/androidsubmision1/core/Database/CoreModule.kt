@@ -38,11 +38,6 @@ val databaseModule = module {
 }
 
 val networkModule = module {
-    val hostname = "api.github.com"
-    val certificatePinner = CertificatePinner.Builder()
-        .add(hostname, "sha256/ jFaeVpA8UQuidlJkkpIdq3MPwD0m8XbuCRbJlezysBE=")
-        .add(hostname, "sha256/ Jg78dOE+fydIGk19swWwiypUSR6HWZybfnJG/8G7pyM=")
-        .build()
     val loggingInterceptor = if (BuildConfig.DEBUG) {
         HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
     } else {
@@ -50,9 +45,15 @@ val networkModule = module {
     }
 
     single {
+        val hostname = "api.github.com"
+        val certificatePinner = CertificatePinner.Builder()
+            .add(hostname, "sha256/ jFaeVpA8UQuidlJkkpIdq3MPwD0m8XbuCRbJlezysBE=")
+            .add(hostname, "sha256/ Jg78dOE+fydIGk19swWwiypUSR6HWZybfnJG/8G7pyM=")
+            .build()
+
         OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
-            .connectTimeout(120, TimeUnit.SECONDS).readTimeout(120, TimeUnit.SECONDS).build()
+            .connectTimeout(120, TimeUnit.SECONDS).readTimeout(120, TimeUnit.SECONDS).certificatePinner(certificatePinner).build()
     }
 
     single {

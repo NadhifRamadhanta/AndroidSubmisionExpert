@@ -10,5 +10,4 @@
     <string name="dark_mode">Dark Mode</string>
     <string name="user_photo_profile">User Photo Profile</string>
     <string name="go_to_favorite">Go To Favorite</string>
-    <string name="title_countfavorite">Count Favorite</string>
 </resources>
