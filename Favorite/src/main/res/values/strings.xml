@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_favorite">User Favorite</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="total_user_button">Total User Button</string>
+</resources>
